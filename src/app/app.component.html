@@ -1,0 +1,28 @@
+<div class="box">
+  <h1>Currency Converter</h1>
+  <div class="horizontal">
+    <h3>converting</h3>
+    <input (input)="takeAmount($event)" type="text" value="{{ amount }}" />
+    <select (change)="setFromCurency($event)">
+      <option
+        *ngFor="let currency of currencies"
+        value="currency.name"
+        id="{{ currency.code }}"
+      >
+        {{ currency.name }}
+      </option>
+    </select>
+    <h3>to</h3>
+    <select (change)="setToCurency($event)">
+      <option
+        *ngFor="let currency of currencies.reverse()"
+        value="currency.name"
+        id="{{ currency.code }}"
+      >
+        {{ currency.name }}
+      </option>
+    </select>
+  </div>
+  <h3>gives</h3>
+  <h1>{{ amount | currencyConverter: fromCurrency:toCurrency }}</h1>
+</div>
